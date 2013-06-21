@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test inté {% block title %}{% endblock %}</title>
+
+  {% block head %}
+  <link rel="stylesheet" href="styles/main.css">
+  {% endblock %}
+</head>
+<body class="{{ basename }}">
+
+  <div class="navbar navbar-static-top">
+    <div class="navbar">
+      <div class="navbar-inner">
+
+        <div class="container">
+          <a class="brand" href="#">Test Inté</a>
+          <ul class="nav">
+            <li {% if basename == 'index' %} class="active"{% endif %}><a href="/">Home</a></li>
+            <li {% if basename == 'page1' %} class="active"{% endif %}><a href="page1.html">Page 1</a></li>
+            <li {% if basename == 'page2' %} class="active"{% endif %}><a href="page2.html">Page 2</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>{% block title %}{% endblock %}</h1>
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer>Last update at {{ date }}</footer>
+</body>
+</html>
