@@ -6,11 +6,11 @@ Integrator kit with grunt and swig
 Installation
 ------------
 
-./install.sh
+`./install.sh`
 
 Usage
 -----
 
-grunt server
-grunt build
+`grunt server` to run a nodejs webserver with livereload
+`grunt build` to build an optimized version of your project
 
