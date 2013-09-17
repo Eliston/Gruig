@@ -1,37 +1,77 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Test inté {% block title %}{% endblock %}</title>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Gruig</title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-  {% block head %}
-  <link rel="stylesheet" href="styles/main.css">
-  {% endblock %}
-</head>
-<body class="{{ basename }}">
+        <!-- build:css({.tmp,<%= yeoman.app %>}) styles/styles.css -->
+        <link rel="stylesheet" href="components/flexslider/flexslider.css">
+        <link rel="stylesheet" href="components/humane-js/themes/libnotify.css">
+        <link href="styles/print.css" media="print" rel="stylesheet" type="text/css" />
+        <link href="styles/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+        <!-- endbuild -->
 
-  <div class="navbar navbar-static-top">
-    <div class="navbar">
-      <div class="navbar-inner">
+
+        <!-- build:js({.tmp,<%= yeoman.app %>}) scripts/vendor/modernizr.js -->
+        <script src="components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body class="{{ basename }}">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="page1.html">Page 1</a></li>
+                        <li><a href="page2.html">Page 2</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
         <div class="container">
-          <a class="brand" href="#">Test Inté</a>
-          <ul class="nav">
-            <li {% if basename == 'index' %} class="active"{% endif %}><a href="/">Home</a></li>
-            <li {% if basename == 'page1' %} class="active"{% endif %}><a href="page1.html">Page 1</a></li>
-            <li {% if basename == 'page2' %} class="active"{% endif %}><a href="page2.html">Page 2</a></li>
-          </ul>
+            {% block content %}{% endblock %}
         </div>
 
-      </div>
-    </div>
-  </div>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
 
-  <div class="container">
-    <h1>{% block title %}{% endblock %}</h1>
-    {% block content %}{% endblock %}
-  </div>
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
 
-  <footer>Last update at {{ date }}</footer>
+        <!-- build:js({.tmp,<%= yeoman.app %>}) scripts/libs.js -->
+        <script src="components/jquery/jquery.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,<%= yeoman.app %>}) scripts/vendor/bootstrap.js -->
+        <script src="components/bootstrap-sass/dist/js/bootstrap.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,<%= yeoman.app %>}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
 </body>
 </html>
+

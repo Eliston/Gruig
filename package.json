@@ -1,7 +1,8 @@
 {
   "name": "inte-test",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
@@ -27,8 +28,8 @@
     "matchdep": "~0.1.1",
     "highlight.js": "~7.3.0",
     "marked": "~0.2.8",
-    "swig": "~0.14.0",
-    "grunt-swig": "0.0.12"
+    "swig": "~1.0.0-rc3",
+    "grunt-swig": "~0.1.0"
   },
   "engines": {
     "node": ">=0.8.0"
