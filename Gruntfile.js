@@ -32,13 +32,12 @@ module.exports = function (grunt) {
                 files: ['test/spec/{,*/}*.coffee'],
                 tasks: ['coffee:test']
             },
-            compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server']
+            less: {
+                files: ['<%= yeoman.app %>/styles/less/*.{less}'],
+                tasks: ['less:server']
             },
             swig: {
                 files: [
-                    '<%= yeoman.app %>/content/{,*/}*.html',
                     '<%= yeoman.app %>/templates/{,*/}*.html'
                 ],
                 tasks: ['swig', 'livereload']
@@ -147,21 +146,27 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        compass: {
+        less: {
             options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/components',
-                relativeAssets: true
+                paths: ["<%= yeoman.app %>/styles/less", "<%= yeoman.app %>/components"]
             },
-            dist: {},
             server: {
-                options: {
-                    debugInfo: true
-                }
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/styles/less/',
+                    src: '{,*/}*.less',
+                    dest: '.tmp/styles',
+                    ext: '.css'
+                }]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/styles/less/',
+                    src: '{,*/}*.less',
+                    dest: '.tmp/styles',
+                    ext: '.css'
+                }]
             }
         },
         swig: {
@@ -285,17 +290,17 @@ module.exports = function (grunt) {
             server: [
                 'swig',
                 'coffee:dist',
-                'compass:server'
+                'less:server'
             ],
             test: [
                 'swig',
                 'coffee',
-                'compass'
+                'less'
             ],
             dist: [
                 'swig',
                 'coffee',
-                'compass:dist',
+                'less:dist',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
@@ -303,12 +308,14 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-swig');
+    grunt.loadNpmTasks('grunt-contrib-less');
+
     grunt.renameTask('regarde', 'watch');
 
     // load tasks
     //grunt.loadTasks('tasks/');
 
-    grunt.loadNpmTasks('grunt-swig');
 
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {
